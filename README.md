@@ -10,9 +10,10 @@ a. Create ArrayStack Class using Adapter Method
 
 ### Side
 4. 2Σ: Q1, Q2, +5
-https://docs.google.com/document/d/19IVZFc5PUfYs2gpgO7SEKduoK_SV5KpeYKonM5XIWws/edit?tab=t.dsmjshmcquz
- 
-Recursion: 
+[link](https://docs.google.com/document/d/19IVZFc5PUfYs2gpgO7SEKduoK_SV5KpeYKonM5XIWws/edit?tab=t.dsmjshmcqu)
+
+Recursion:
+
 5. Factorial
 6. Fibonacci Sequence
 7. Reversing using Recursion
