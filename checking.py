@@ -20,9 +20,7 @@ def checking_tags(content):
         i += 1
         
     return not tags
-            
-            
-            
+                       
 def checking_tags(content):
     content = content.strip()
     tags, i = [], 0
