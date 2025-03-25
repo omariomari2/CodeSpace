@@ -23,7 +23,7 @@ Recursion:
 ## Tue 25
 ### Queues
 a. Create a cyclic ArrayQueue Class completely
-include methods for enqueue, dequeue, first, is_empty, len
+include methods for enqueue, dequeue, first, is_empty, len <br>
 b. Include class to raise own exceptions
 ### Deques
 a. Create ArrayDeque Class 
