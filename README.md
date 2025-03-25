@@ -1,5 +1,6 @@
 # My CodeSpace
-Re-Learning Python 
+Re-Learning Data Structures in Python 
+E-Book: [DSA](https://drive.google.com/file/d/1hfbg3MbZkBwk3hNB2CtAp2gieGir1HxY/view?usp=drive_link)
 
 ## Sun 23
 ### Stacks
@@ -17,3 +18,14 @@ Recursion:
 5. Factorial
 6. Fibonacci Sequence
 7. Reversing using Recursion
+
+
+## Tue 25
+### Queues
+a. Create a cyclic ArrayQueue Class completely
+include methods for enqueue, dequeue, first, is_empty, len
+b. Include class to raise own exceptions
+### Deques
+a. Create ArrayDeque Class 
+include methods for add_first. add_last, delete_dirst, delete_last, first, last,
+resize
