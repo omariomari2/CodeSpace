@@ -13,16 +13,16 @@ ans = max(ans, (value[n - 1] + value[n - 2])) where n = len(value)
 return ans 
 
 time complexity = O(N) for the nums pass + O(N) for the dict pass + O(NlogN) for sorting the dict values
+5, 55 
+n = '121'
+
 """
 
 def max_pair_sum(nums: list[int]) -> int:
     matches = dict()
     for num in nums:
         n = str(num)
-        if len(n) > 1:
-            k = n[0] + n[-1] 
-        else:
-            k = n
+        k = n[0] + n[-1] 
         matches[k] = matches.get(k, []) + [num]
 
     ans = -1
@@ -30,7 +30,7 @@ def max_pair_sum(nums: list[int]) -> int:
         if len(matches[entry]) < 2:
             continue 
 
-        vals = matches[entry].sort()
+        vals = sorted(matches[entry])
         n = len(vals) - 1
         largest_sum = vals[n] + vals[n - 1]
         ans = max(ans, largest_sum)
