@@ -8,13 +8,13 @@ Closing a case on day `i` earns `points[i]`. If you close day `i`, you must skip
 
 ## Signature
 
-```ts
-function maxSeasonPoints(points: number[]): number
+```python
+def max_season_points(points: list[int]) -> int:
 ```
 
 ## Constraints
 
-- `1 <= n <= 1e5`, where `n` is `points.length`
+- `1 <= n <= 1e5`, where `n` is `len(points)`
 - `0 <= points[i] <= 1e4`
 
 ## Samples

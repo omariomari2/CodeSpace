@@ -8,13 +8,13 @@ A payment service stores pending refund amounts in cents. Finance wants pairs of
 
 ## Signature
 
-```ts
-function countRefundPairs(amounts: number[], target: number): number
+```python
+def count_refund_pairs(amounts: list[int], target: int) -> int:
 ```
 
 ## Constraints
 
-- `1 <= n <= 1e5`, where `n` is `amounts.length`
+- `1 <= n <= 1e5`, where `n` is `len(amounts)`
 - `1 <= amounts[i], target <= 1e9`
 
 ## Samples
