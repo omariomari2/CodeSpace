@@ -36,3 +36,49 @@ def max_pair_sum(nums: list[int]) -> int:
         ans = max(ans, largest_sum)
 
     return ans
+
+# ---- test cases (run: python solution.py) ----
+TEST_CASES = [
+    ([2, 36, 45, 306, 415], 460),
+    ([7], -1),
+    ([1, 2, 3], -1),
+    ([11, 11], 22),
+    ([5, 5, 5], 10),
+    ([0, 0], 0),
+    ([10, 100, 1000], 1100),
+    ([121, 101, 1], 222),
+    ([1, 1], 2),
+    ([909, 99, 9, 999], 1908),
+    ([12, 21, 102, 201], 222),
+    ([1000000000, 1000000000, 100000000], 2000000000),
+    ([5, 55], 60),
+    ([3, 303, 33], 336),
+    ([1, 11, 101], 112),
+]
+
+
+def _run_tests():
+    import random, time
+    passed = 0
+    for i, (inp, expected) in enumerate(TEST_CASES, 1):
+        try:
+            got = max_pair_sum(list(inp))
+        except Exception as e:
+            got = f"error: {type(e).__name__}: {e}"
+        if got == expected:
+            passed += 1
+        else:
+            print(f"case {i} failed: input={str(inp)[:80]} expected={expected} got={got}")
+    print(f"{passed}/{len(TEST_CASES)} passed")
+
+    # speed check: n = 100,000 should finish well under 2 seconds
+    random.seed(7)
+    big = [random.randint(1, 10**9) for _ in range(100_000)]
+    start = time.time()
+    max_pair_sum(big)
+    took = time.time() - start
+    print(f"speed check (n=100,000): {took:.2f}s {'ok' if took < 2 else 'TOO SLOW'}")
+
+
+if __name__ == "__main__":
+    _run_tests()
