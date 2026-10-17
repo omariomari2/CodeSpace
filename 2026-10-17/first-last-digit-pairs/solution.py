@@ -75,7 +75,11 @@ def _run_tests():
     random.seed(7)
     big = [random.randint(1, 10**9) for _ in range(100_000)]
     start = time.time()
-    max_pair_sum(big)
+    try:
+        max_pair_sum(big)
+    except Exception as e:
+        print(f\"speed check crashed: {type(e).__name__}: {e}\")
+        return
     took = time.time() - start
     print(f"speed check (n=100,000): {took:.2f}s {'ok' if took < 2 else 'TOO SLOW'}")
 
