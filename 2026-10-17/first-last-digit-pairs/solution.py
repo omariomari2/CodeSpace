@@ -78,7 +78,7 @@ def _run_tests():
     try:
         max_pair_sum(big)
     except Exception as e:
-        print(f\"speed check crashed: {type(e).__name__}: {e}\")
+        print(f"speed check crashed: {type(e).__name__}: {e}")
         return
     took = time.time() - start
     print(f"speed check (n=100,000): {took:.2f}s {'ok' if took < 2 else 'TOO SLOW'}")
