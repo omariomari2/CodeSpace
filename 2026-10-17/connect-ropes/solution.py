@@ -1,5 +1,24 @@
+import heapq
+
 def min_cost_to_connect(ropes: list[int]) -> int:
-    pass
+    if len(ropes) < 2:
+        return 0
+    heapq.heapify(ropes)
+    power = 0
+
+    while ropes:
+        # print('yes')
+        merged = heapq.heappop(ropes)
+        if ropes:
+            merged += heapq.heappop(ropes)
+
+        if ropes:
+            heapq.heappush(ropes, merged)
+        power += merged 
+
+    return power 
+
+
 
 
 # ---- test cases (run: python solution.py) ----
