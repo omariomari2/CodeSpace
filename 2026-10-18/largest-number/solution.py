@@ -1,15 +1,17 @@
 def find_largest_number(nums: list[int]) -> int:
     """Pick three digits in their original order and return the biggest 3-digit number they make."""
-    n = len(nums) - 2
-    largest = 0
-    for i in range(len(nums) - 3):
-        number = (nums[i]*100) + (nums[i+1]*10) + nums[i+2]
-        # print(number)
-        largest = max(largest, number)
+    m1 = -1
+    m2 = -1
+    m3 = -1
 
-    return largest   
+    for num in nums:
+        if m2 != -1:
+            m3 = max(m3, m2 * 10 + num)
+        if m1 != -1:
+            m2 = max(m2, m1 * 10 + num)
+        m1 = max(m1, num)
 
-
+    return m3
 
 # ---- test cases (run: python solution.py) ----
 TEST_CASES = [
