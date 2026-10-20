@@ -1,10 +1,37 @@
 def count_matching_subarrays(numbers: list[int], pattern: list[int]) -> int:
-    """Count the windows of numbers whose step-by-step ups, downs, and ties match pattern."""
+    count = 0
+    n = len(numbers)
+    m = len(pattern)
+    count = 0
+
+    def is_match(candidate, l1):
+        comp = 1
+        for i in range(len(l1)):
+            p = pattern[i]
+            if l1[i] > candidate:
+                comp = 1
+            elif l1[i] == candidate:
+                comp = 0
+            else:
+                comp = -1
+
+            if p != comp:
+                return False
+            
+            candidate = l1[i]
+
+        return True
+
+    for i in range(n - m):
+        if is_match(numbers[i], numbers[i + 1: i + m + 1]):
+            count += 1
+
+    return count
+
+
     return 0
 
 
-# ---- test cases (run: python solution.py) ----
-# each case is ((numbers, pattern), expected)
 TEST_CASES = [
     (([4, 1, 3, 4, 4, 5, 5, 1], [1, 0, -1]), 1),
     (([1, 2, 3, 4, 5, 6], [1, 1]), 4),
@@ -52,7 +79,6 @@ def _run_tests():
         return
     took = time.time() - start
     print(f"speed check (n=100,000): {took:.2f}s {'ok' if took < 2 else 'TOO SLOW'}")
-
 
 if __name__ == "__main__":
     _run_tests()
