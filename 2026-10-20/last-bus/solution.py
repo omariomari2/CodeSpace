@@ -1,7 +1,21 @@
 def bustling_town_buses(time_table: list[str], moment: str) -> int:
-    """Return how many minutes ago the last bus left before `moment`, or -1 if none has left yet."""
-    return 0
+    def normalize(time):
+        return int(time[:2] + time[3:])
 
+    def hh_to_mm(num):
+        mm, hh  = num % 100, num // 100
+        return hh * 60  + mm
+
+    moment = normalize(moment)
+    ans = -1
+    for t in time_table:
+        time = normalize(t)
+        if time < moment:
+            ans = max(time, ans)
+
+    if ans == -1:
+        return ans
+    return hh_to_mm(moment) - hh_to_mm(ans)     
 
 # ---- test cases (run: python solution.py) ----
 TEST_CASES = [
