@@ -1,8 +1,12 @@
 def bustling_town_buses(time_table: list[str], moment: str) -> int:
+    # REVIEW: Correct, single O(n) pass, O(1) space. Good.
+    # REVIEW: You convert to an HHMM int, then to minutes later. Why not convert straight to minutes once? It drops a helper and a step where bugs can creep in.
+    # REVIEW: `time` shadows the stdlib module name. Also `hh_to_mm` actually turns HHMM into minutes, so the name is misleading.
     def normalize(time):
         return int(time[:2] + time[3:])
 
     def hh_to_mm(num):
+        # REVIEW: divmod(num, 100) gives (hh, mm) in one call.
         mm, hh  = num % 100, num // 100
         return hh * 60  + mm
 

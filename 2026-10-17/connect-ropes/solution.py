@@ -3,10 +3,16 @@ import heapq
 def min_cost_to_connect(ropes: list[int]) -> int:
     if len(ropes) < 2:
         return 0
+    # REVIEW: Good call on a min-heap, O(n log n) time is right for n=1e5.
+    # REVIEW: heapify mutates the caller's list. Fine here, but in an OA would you copy first? When does it matter?
     heapq.heapify(ropes)
+    # REVIEW: `power` is a vague name for a running cost. Name it after what it is.
     power = 0
 
+    # REVIEW: Given the len<2 guard above, can the loop ever pop a single rope alone? Two of the `if ropes:` checks look dead.
+    # REVIEW: What loop condition would make each iteration exactly "pop two, push one"?
     while ropes:
+        # REVIEW: Delete leftover debug prints before submitting.
         # print('yes')
         merged = heapq.heappop(ropes)
         if ropes:

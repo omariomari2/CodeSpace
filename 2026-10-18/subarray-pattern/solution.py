@@ -1,9 +1,13 @@
 def count_matching_subarrays(numbers: list[int], pattern: list[int]) -> int:
+    # REVIEW: `count = 0` is set twice, and the `return 0` at the bottom is dead code. Tidy before submitting.
     count = 0
     n = len(numbers)
     m = len(pattern)
     count = 0
 
+    # REVIEW: Correct logic, but it's O(n*m) and the slice copies m items per window too. That's the 5.5s timeout at n=1e5, m=1e3.
+    # REVIEW: You recompute the same comparison between neighbours for every window that covers them. How many times is each one computed? (Same hint as before: build the 1/0/-1 array once, then match with KMP or Z.)
+    # REVIEW: `l1` and reassigning `candidate` make this hard to follow. Name things after what they mean (window, prev).
     def is_match(candidate, l1):
         comp = 1
         for i in range(len(l1)):
@@ -22,6 +26,7 @@ def count_matching_subarrays(numbers: list[int], pattern: list[int]) -> int:
 
         return True
 
+    # REVIEW: The bounds are right (window i..i+m). Good, off-by-ones are easy to get wrong here.
     for i in range(n - m):
         if is_match(numbers[i], numbers[i + 1: i + m + 1]):
             count += 1

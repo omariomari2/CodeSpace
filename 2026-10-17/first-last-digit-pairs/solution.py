@@ -1,4 +1,5 @@
 """
+# REVIEW: Writing pseudocode first is a great habit. But this one now describes the old sort-based version. Keep notes in sync or trim them.
 PseudoCode
 Bruteforce
 first pass through all and rewrite into dict 
@@ -18,6 +19,7 @@ n = '121'
 
 """
 
+# REVIEW: Git already keeps old versions. Delete commented-out attempts so the file has one clear solution.
 # def max_pair_sum(nums: list[int]) -> int:
 #     matches = dict()
 #     for num in nums:
@@ -41,6 +43,8 @@ n = '121'
 #     return ans
 
 def max_pair_sum(nums: list[int]) -> int:
+    # REVIEW: Strong upgrade: one pass, O(n) time, O(distinct keys) space, and no sorting. This is the version to aim for first time.
+    # REVIEW: `{}` is more idiomatic than dict(). Could `max_seen.get(k)` or a tuple key (s[0], s[-1]) make the branch shorter?
     max_seen = dict()
     ans = -1
 
@@ -50,6 +54,7 @@ def max_pair_sum(nums: list[int]) -> int:
 
         if k in max_seen:
             ans = max(ans, max_seen[k] + num)
+            # REVIEW: Nice, updating the answer before the max means you never pair a number with itself.
             if num > max_seen[k]:
                 max_seen[k] = num
         else:

@@ -1,9 +1,12 @@
 def find_largest_number(nums: list[int]) -> int:
     """Pick three digits in their original order and return the biggest 3-digit number they make."""
+    # REVIEW: Clean O(n) time / O(1) space DP. Great fit for the constraints.
+    # REVIEW: m1/m2/m3 are terse. Names like best_1digit/best_2digit say what they hold. -1 is a good sentinel since 0 is a real answer.
     m1 = -1
     m2 = -1
     m3 = -1
 
+    # REVIEW: The update order (m3, then m2, then m1) is what stops one digit being used twice. Could you explain why in an interview? Add a one-line comment.
     for num in nums:
         if m2 != -1:
             m3 = max(m3, m2 * 10 + num)
